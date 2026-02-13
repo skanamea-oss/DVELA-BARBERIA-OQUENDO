@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'VELA BARBERÍA | Callao</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #c5a059;
+            --text-color: #f4f4f4;
+            --red-pole: #b92b27;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Georgia', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 0 15px 0;
+        }
+
+        a { text-decoration: none; color: white; transition: 0.3s; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* --- BARRA DE NAVEGACIÓN (HEADER) --- */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 15px 50px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .logo-nav {
+            font-size: 40px; 
+            font-weight: bold;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 20px; 
+        }
+        
+        .logo-nav img { 
+            height: 80px; 
+            border-radius: 50%; 
+        }
+
+        nav ul { display: flex; gap: 25px; align-items: center; }
+        nav ul li a:hover { color: var(--accent-color); }
+        nav ul li a { font-size: 1.1rem; } 
+
+        .btn-reservar {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 12px 25px; 
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        .btn-reservar:hover { background-color: #fff; }
+
+        .btn-secundario {
+            background-color: transparent;
+            color: var(--accent-color);
+            padding: 10px 23px;
+            font-weight: bold;
+            border-radius: 4px;
+            border: 2px solid var(--accent-color);
+            display: inline-block;
+        }
+        .btn-secundario:hover { background-color: var(--accent-color); color: #000; }
+
+        /* --- SECCIÓN HERO (PORTADA) --- */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=1953&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 140px 20px 20px 20px; 
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px; 
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .hero-logo img {
+            width: 600px; 
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.3));
+        }
+
+        .hero-text {
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero span { color: var(--accent-color); display: block; }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* --- ESTILOS COMUNES PARA SERVICIOS Y PRODUCTOS --- */
+        .section-block {
+            padding: 80px 20px;
+            background-color: #222;
+        }
+        
+        .bg-darker {
+            background-color: #1a1a1a; 
+            border-top: 1px solid #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title { text-align: center; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; color: #888; margin-bottom: 50px; display: block; }
+
+        .card-item {
+            display: flex; 
+            background: #2a2a2a;
+            border: 1px solid #333;
+            margin-bottom: 30px; 
+            transition: 0.3s;
+            overflow: hidden; 
+        }
+
+        .card-item:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .card-img {
+            flex: 1; 
+            min-width: 300px; 
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            display: block;
+        }
+
+        .card-text {
+            flex: 1.5; 
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-top: 15px;
+            display: block;
+        }
+        
+        /* Botón pequeño para Servicios y Productos */
+        .btn-card {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+            text-align: center;
+            margin-top: 15px;
+            width: fit-content;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .btn-card:hover { background-color: #fff; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #111;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 4px solid var(--red-pole);
+        }
+
+        .footer-info p { margin: 10px 0; color: #aaa; font-size: 1.1rem; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1100px) {
+            .hero-container {
+                flex-direction: column; 
+                text-align: center;
+                gap: 30px;
+            }
+            .hero-text { text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .hero-logo img { width: 350px; }
+            
+            header { flex-direction: column; gap: 15px; padding: 15px; }
+            .logo-nav { font-size: 30px; flex-direction: column; } 
+            nav ul { flex-direction: column; gap: 10px; text-align: center; }
+        }
+
+        @media (max-width: 768px) {
+            .card-item { flex-direction: column; }
+            .card-img { height: 250px; width: 100%; }
+            .card-text { align-items: center; text-align: center; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-nav">
+            <img src="logo.png" alt="Icono"> D'VELA BARBERÍA
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#productos">Productos</a></li>
+                <li><a href="https://wa.me/+51916641505" class="btn-reservar" target="_blank">RESERVAR CITA</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-container">
+            <div class="hero-logo">
+                <img src="logo.png" alt="Logo Gigante D'Vela">
+            </div>
+            <div class="hero-text">
+                <h1>BIENVENIDOS A <br><span>D'VELA BARBERÍA</span></h1>
+                <p>La Barbería hecha para los hombres de verdad. Encontrarás los mejores productos para tu cuidado personal y los mejores servicios de Barbería en todo el Callao. Te esperamos ahora mismo.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/+51916641505" class="btn-reservar" style="font-size: 1.1rem;" target="_blank">AGENDAR CITA</a>
+                    <a href="https://share.google/P96KlcqgCaXppcYAU" class="btn-secundario" style="font-size: 1.1rem;" target="_blank">UBÍCANOS ACÁ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-block" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <span class="section-subtitle">Calidad Premium & Estilo</span>
+        
+        <div class="container">
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="corte-clasico.jpg" alt="Corte">
+                </div>
+                <div class="card-text">
+                    <h3>Corte</h3>
+                    <p>Tijera y máquina con acabado perfecto. Incluye lavado y peinado con los mejores productos.</p>
+                    <span class="price">S/20</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">RESERVA TU CITA</a>
+                </div>
+            </div>
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="barba.jpg" alt="Corte y Mascarilla">
+                </div>
+                <div class="card-text">
+                    <h3>Corte + Mascarilla y limpieza facial</h3>
+                    <p>Renueva tu estilo y tu piel. Disfruta de un corte profesional seguido de una limpieza facial profunda y mascarilla para eliminar impurezas y revitalizar tu rostro.</p>
+                    <span class="price">S/35</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">RESERVA TU CITA</a>
+                </div>
+            </div>
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="corte-y-barba.jpg" alt="Corte y Barba">
+                </div>
+                <div class="card-text">
+                    <h3>Corte y Barba</h3>
+                    <p>La experiencia completa. Renovación total de tu imagen con corte de cabello y perfilado de barba.</p>
+                    <span class="price">S/25</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">RESERVA TU CITA</a>
+                </div>
+            </div>
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="corte-nino.jpg" alt="Corte Niño">
+                </div>
+                <div class="card-text">
+                    <h3>Corte Niño</h3>
+                    <p>Estilo y paciencia para los más pequeños. Un corte moderno adaptado a su edad.</p>
+                    <span class="price">S/20</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">RESERVA TU CITA</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-block bg-darker" id="productos">
+        <h2 class="section-title">Productos Exclusivos</h2>
+        <span class="section-subtitle">Lleva la calidad de D'Vela a tu casa</span>
+        
+        <div class="container">
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="afeitadora-andis.jpg" alt="Afeitadora Andis">
+                </div>
+                <div class="card-text">
+                    <h3>Afeitadora Original Andis 17170</h3>
+                    <p>Tecnología de titanio y litio. La herramienta perfecta para un afeitado al ras y sin irritación. Calidad profesional garantizada.</p>
+                    <span class="price">S/200</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">COMPRAR</a>
+                </div>
+            </div>
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="polvo-peinar.jpg" alt="Polvo para Peinar">
+                </div>
+                <div class="card-text">
+                    <h3>Polvo para peinar el cabello (20g)</h3>
+                    <p>Consigue volumen instantáneo y textura con acabado mate. Ideal para peinados modernos que duran todo el día.</p>
+                    <span class="price">S/30</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">COMPRAR</a>
+                </div>
+            </div>
+            
+            <div class="card-item">
+                <div class="card-img">
+                    <img src="soplador-limpieza.jpg" alt="Soplador de Limpieza">
+                </div>
+                <div class="card-text">
+                    <h3>Herramienta de soplador de limpieza</h3>
+                    <p>Mantén tu área impecable. Potente y compacto, ideal para eliminar residuos de cabello rápidamente.</p>
+                    <span class="price">S/100</span>
+                    <a href="https://wa.me/+51916641505" class="btn-card" target="_blank">COMPRAR</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <h2>Visítanos</h2>
+        <div class="footer-info">
+            <p>📍 07001, Callao</p>
+            <p>📞 <a href="https://wa.me/+51916641505" style="color:#c5a059;" target="_blank">916 641 505</a></p>
+            <p>⏰ LUN - DOM: 10:00 AM - 10:00 PM</p>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 D'Vela Barbería.</p>
+    </footer>
+
+</body>
+</html>
