@@ -35,7 +35,6 @@
         /* --- BARRA DE NAVEGACIÓN (HEADER) --- */
         header {
             background: rgba(0, 0, 0, 0.95);
-            /* Espaciado para PC (Grande) */
             padding: 15px 50px; 
             display: flex;
             justify-content: space-between;
@@ -46,11 +45,10 @@
             z-index: 1000;
             box-sizing: border-box;
             border-bottom: 2px solid var(--accent-color);
-            transition: all 0.3s ease; /* Suavizar cambios de tamaño */
+            transition: all 0.3s ease;
         }
 
         .logo-nav {
-            /* TAMAÑO GIGANTE EN PC */
             font-size: 40px; 
             font-weight: bold;
             color: var(--accent-color);
@@ -60,7 +58,6 @@
         }
         
         .logo-nav img { 
-            /* TAMAÑO GIGANTE EN PC */
             height: 80px; 
             border-radius: 50%; 
         }
@@ -99,7 +96,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* Padding superior para que la barra no tape el contenido */
             padding: 140px 20px 20px 20px; 
         }
 
@@ -229,64 +225,66 @@
 
         .footer-info p { margin: 10px 0; color: #aaa; font-size: 1.1rem; }
 
-        /* --- RESPONSIVE (CELULARES) - ARREGLADO --- */
+        /* --- RESPONSIVE (CELULARES) --- */
         @media (max-width: 1100px) {
-            /* Ajustes Generales */
             .hero-container {
                 flex-direction: column; 
                 text-align: center;
-                gap: 30px;
+                gap: 20px; /* Reduje el espacio entre logo y texto */
             }
             .hero-text { text-align: center; }
             .hero-buttons { justify-content: center; }
             
-            /* Logo de portada más pequeño en celular */
-            .hero-logo img { width: 280px; } 
+            /* --- AJUSTE CLAVE PARA CELULAR --- */
+            .hero-logo img { 
+                width: 180px; /* Logo MUCHO más pequeño para que no tape todo */
+            } 
+            
+            .hero h1 {
+                font-size: 2rem; /* Título más pequeño */
+            }
+            
+            .hero p {
+                font-size: 1rem; /* Texto de párrafo ajustado */
+                padding: 0 10px; /* Margen para que no pegue a los bordes */
+            }
 
-            /* --- ARREGLO DE LA CABEZA (HEADER) EN CELULAR --- */
+            /* --- HEADER EN CELULAR --- */
             header { 
                 flex-direction: column; 
                 gap: 10px; 
-                /* Reducir padding drásticamente en móvil */
                 padding: 10px; 
             }
 
-            /* Reducir el logo y texto del menú SOLO en celular para que no estorbe */
             .logo-nav { 
-                font-size: 1.5rem; /* Mucho más pequeño que en PC */
-                flex-direction: row; /* Mantener logo y texto en línea */
+                font-size: 1.5rem; 
+                flex-direction: row; 
                 gap: 10px;
             } 
             
-            .logo-nav img {
-                height: 40px; /* Logo pequeño en la barra */
-            }
+            .logo-nav img { height: 40px; }
 
-            /* Menú horizontal en lugar de vertical para ahorrar espacio */
             nav ul { 
                 flex-direction: row; 
-                flex-wrap: wrap; /* Si no cabe, baja a la siguiente línea */
-                gap: 15px; 
+                flex-wrap: wrap; 
+                gap: 10px; 
                 justify-content: center; 
             }
             
-            nav ul li a {
-                font-size: 0.9rem; /* Texto de enlaces más pequeño */
-            }
+            nav ul li a { font-size: 0.85rem; }
 
             .btn-reservar {
-                padding: 8px 15px; /* Botón más compacto */
-                font-size: 0.9rem;
+                padding: 8px 12px;
+                font-size: 0.85rem;
             }
 
-            /* Ajuste de padding de la portada para que el menú no la tape */
-            .hero { padding-top: 130px; }
+            .hero { padding-top: 140px; } /* Ajuste final de altura */
         }
 
         @media (max-width: 768px) {
             .card-item { flex-direction: column; }
             .card-img { height: 250px; width: 100%; }
-            .card-text { align-items: center; text-align: center; padding: 20px; } 
+            .card-text { align-items: center; text-align: center; padding: 25px 15px; } 
         }
     </style>
 </head>
